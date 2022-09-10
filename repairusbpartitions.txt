@@ -1,0 +1,14 @@
+How to fix a USB drive fragmented into separate partitions
+Open Command Prompt or Powershell with Admin Privileges by right-clicking on the desktop 
+Start button or pressing Windows + X.
+Once in the command line interface, type in ‘diskpart’
+Then type ‘list disk’ to see all disks listed.
+ It should show all your connected hard drives with an associated number. 
+Make a note of your flash drive number, then type ‘select disk [drive number goes here’.
+Once you’ve selected that, you can now begin to action on the drive. 
+Enter in ‘clean’, then ‘create partition primary’.
+Next, format your drive by entering in the command ‘format fs=fat32 quick’
+Type  ‘active’, then ‘assign.’
+Once you’re done, type exit to finish your work. Once this is done, your flash drive should be restored to normal.
+
+font: https://mspoweruser.com/how-to-fix-a-usb-drive-fragmented-into-separate-partitions/
