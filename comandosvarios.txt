@@ -1,0 +1,37 @@
+Get-ComputerInfo
+Get-ComputerInfo -Property “Os*”
+Get-LocalUser
+net user {username} |findstr “Last”
+
+
+C:\ > Windows > System32 > drivers > etc> hosts file.
+Get-Content C:\Windows\System32\drivers\etc\hosts
+
+HKEY_LOCAL_MACHINE > SOFTWARE > Microsoft > Windows > CurrentVersion > Run
+Get-Item HKLM:\Software\Microsoft\Windows\CurrentVersion\Run
+
+(Get-Item C:\Windows).LastAccessTime
+
+Get-LocalGroupMember -Group “Administrators”
+------------------
+# Obtiene el grupo de administradores usando el SID conocido
+$adminGroup = Get-LocalGroup | Where-Object { $_.SID -eq "S-1-5-32-544" }
+
+# Luego, obtiene los miembros de ese grupo sin importar su nombre específico
+if ($adminGroup) {
+    Get-LocalGroupMember -Group $adminGroup.Name
+} else {
+    Write-Output "No se encontró el grupo de administradores."
+}
+
+-------------------------------
+
+Get-ScheduledTask
+Get-Scheduled | where {$_.TaskPath -eq “\”}
+
+$task = Get-ScheduledTask | Where TaskName -EQ “Clean file system”
+$task.Actions
+
+  -----------
+
+  4702,4720,4672,4648,4698
